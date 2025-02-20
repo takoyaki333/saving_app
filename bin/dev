@@ -1,0 +1,15 @@
+#!/bin/bash
+# ./bin/dev: This is the entry point for starting your development environment
+
+# Start Rails server with hot reload and tailwind
+# We use `bin/rails server` to run the web server, and `yarn` to build assets
+
+# Start the Rails server in the background
+bin/rails server -b 0.0.0.0 -p 3000 &
+
+# Start js and css processes
+yarn build --watch & # This watches for JS file changes
+yarn build:css --watch & # This watches for CSS file changes
+
+# Wait for all processes to finish
+wait
