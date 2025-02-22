@@ -1,0 +1,11 @@
+<h1>Welcome to SavingApp</h1>
+
+<% if logged_in? %>
+  <p>ようこそ、<%= current_user.name %> さん！</p>
+  <%= link_to "目標一覧", goals_path %> |
+  <%= link_to "ログアウト", logout_path, method: :delete %>
+<% else %>
+  <p>まだアカウントをお持ちでない方は、登録してください。</p>
+  <%= link_to "新規登録", signup_path %> |
+  <%= link_to "ログイン", login_path %>
+<% end %>
