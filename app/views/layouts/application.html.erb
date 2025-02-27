@@ -6,19 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
     <nav>
-        <% if logged_in? %>
-          <p>ようこそ、<%= current_user.name %> さん！</p>
-          <%= link_to "ログアウト", logout_path, method: :delete %>
-        <% else %>
-          <%= link_to "ログイン", login_path %> |
-          <%= link_to "新規登録", signup_path %>
-        <% end %>
-      </nav>
+      <% if logged_in? %>
+        <p>ようこそ、<%= current_user.name %> さん！</p>
+        <%= button_to "ログアウト", logout_path, method: :delete, data: { turbo: false }, class: "btn btn-danger" %>
+      <% else %>
+        <%= button_to "ログイン", login_path %> 
+        <%= button_to "新規登録", signup_path %>
+      <% end %>
+    </nav>
+
+    <% if flash[:notice] %>
+      <p style="color: green;"><%= flash[:notice] %></p>
+    <% elsif flash[:alert] %>
+      <p style="color: red;"><%= flash[:alert] %></p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

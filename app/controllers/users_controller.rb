@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id 
-      redirect_to root_path, notice: 'ユーザー登録が完了しました'
+      redirect_to dashboard_path, notice: 'ユーザー登録が完了しました'
     else
       render :new, status: :unprocessable_entity
     end
