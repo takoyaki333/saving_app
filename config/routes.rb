@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  resources :goals
+  get "/dashboard", to: "goals#index"
+
+  resources :goals do 
+    resources :savings, only: [:create, :index]
+  end
+
   resources :users, only: [:new, :create] 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

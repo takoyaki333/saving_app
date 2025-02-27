@@ -1,0 +1,15 @@
+<h2>目標登録</h2>
+<%= form_with(model: @goal, local: true) do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :target_amount %><br>
+    <%= f.number_field :target_amount %>
+  </div>
+
+  <div>
+    <%= f.submit "登録" %>
+  </div>
+<% end %>

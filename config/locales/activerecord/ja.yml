@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      goal: 目標
+
+    attributes:
+      user:
+        email: メールアドレス
+        name: 名前
+        password: パスワード
+      goal:
+        name: 名前
+        target_amount: 目標金額
+      saving:
+        transaction_type: タイプ
+        amount: 金額
+        reason: 節約理由
+        category: カテゴリー
